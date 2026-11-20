@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Remove Adblock Thing — popup demo</title>
+<style>
+* { box-sizing: border-box }
+body { margin: 0; background: #10151f; color: #f1f5ff; font: 16px system-ui, sans-serif }
+main { padding: 32px 48px }
+small { color: #aabcfb; letter-spacing: .16em; font-weight: 700 }
+h1 { margin: 8px 0 20px; font-size: 28px }
+.player { position: relative; display: grid; place-items: center; height: 302px; border: 1px solid #364461; border-radius: 16px; background: radial-gradient(ellipse at bottom, #2a416d, #151e31); overflow: hidden }
+.play { font-size: 50px; color: #b9caff }
+tp-yt-iron-overlay-backdrop { position: absolute; inset: 0; background: #050811bd }
+ytd-enforcement-message-view-model { position: absolute; width: 365px; padding: 24px; border-radius: 14px; background: #f4f6ff; color: #17213a; box-shadow: 0 12px 36px #0008 }
+h2 { margin: 0 0 8px; font-size: 20px }
+p { margin: 0; line-height: 1.5 }
+</style>
+<main class="style-scope">
+  <small>REMOVE ADBLOCK THING / LOCAL TEST</small>
+  <h1>Popup remover demo</h1>
+  <div class="player">
+    <span class="play" aria-label="Player placeholder">▶</span>
+    <tp-yt-iron-overlay-backdrop opened></tp-yt-iron-overlay-backdrop>
+    <ytd-enforcement-message-view-model>
+      <h2>Ad blocker warning</h2>
+      <p>This simulated warning covers the player until the userscript removes it.</p>
+    </ytd-enforcement-message-view-model>
+  </div>
+</main>
+</html>

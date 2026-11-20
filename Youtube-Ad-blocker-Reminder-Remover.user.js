@@ -370,7 +370,7 @@
 
 
     function checkForUpdate(){
-        if (window.top !== window.self && !(window.location.href.includes("youtube.com"))){
+        if (window.top !== window.self){
             return;
         }
 
@@ -381,7 +381,10 @@
         const scriptUrl = 'https://raw.githubusercontent.com/TheRealJoelmatic/RemoveAdblockThing/main/Youtube-Ad-blocker-Reminder-Remover.user.js';
 
         fetch(scriptUrl)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.text();
+        })
         .then(data => {
             // Extract version from the script on GitHub
             const match = data.match(/@version\s+(\d+\.\d+)/);
