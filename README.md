@@ -1,106 +1,45 @@
-Use this script with your existing ad blocker, like uBlock Origin.
+# Remove Adblock Thing
 
-YouTube has started showing “still buffering” / “Experiencing interruptions?” messages to discourage people from using ad blockers. This script is designed to bypass that issue while you keep using your normal ad blocker.
+A userscript for YouTube that works alongside your existing ad blocker. It attempts to reduce playback interruptions and includes an optional ad-block warning popup remover. YouTube changes its player over time, so results may vary.
 
-**Thank you for all the support this project has received.**
-
-
-# Remove the Adblock Popup from YouTube
-
-
-[![picture](Thumbnail.jpg?raw=true)](https://www.youtube.com/watch?v=jvSf10lgxs4&ab_channel=Joelmatic)
-
-
-## Introduction
-
-
-This repository contains a userscript designed to remove YouTube’s annoying ad blocker warnings and help bypass the “still buffering” issue that YouTube uses to discourage ad blockers.
-
-This script is meant to be used together with your existing ad blocker. For best results, use it with an ad blocker like uBlock Origin.
-
-
-## Table of Contents:
-
-
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Common Issues](#common-issues)
-4. [Contribution](#contribution)
-5. [License](#license)
-
+[Installation](#installation) · [Screenshots](#screenshots) · [Troubleshooting](#troubleshooting) · [Contributing](#contributing)
 
 ## Installation
 
+1. Install [Tampermonkey](https://www.tampermonkey.net/) for your browser.
+2. Open the [userscript installer](Youtube-Ad-blocker-Reminder-Remover.user.js?raw=true) and select **Install** in Tampermonkey.
+3. Check that **Remove Adblock Thing** is enabled in the Tampermonkey dashboard, then reload any open YouTube tabs.
+4. Keep your usual ad blocker enabled if you use one.
 
-1. **Install Tampermonkey**:
-   If you haven't already, install the Tampermonkey browser extension. You can find it for various browsers:
-   - [Tampermonkey for Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-   - [Tampermonkey for Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-   - [Tampermonkey for Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
-   - [Tampermonkey for Opera/OperaGX](https://addons.opera.com/en-gb/extensions/details/tampermonkey-beta/)
+## Screenshots
 
+These Chromium screenshots show the optional popup remover running against a [local test page](docs/popup-demo.html), not live YouTube. The demo enables `removePopup` and disables the other script modes to isolate popup removal. It does not test video playback or buffering.
 
-2. **Install the Script**:
-   [Click Here and Press Install](Youtube-Ad-blocker-Reminder-Remover.user.js?raw=True).
+**Before:** The simulated warning covers the player placeholder.
 
+![Local demo with the ad blocker warning and its backdrop covering the player](docs/screenshots/popup-before.png)
 
-3. **Enable the Script**:
-   Enable the script by clicking the switch next to the script name in the Tampermonkey Dashboard.
+**After:** The userscript removes the warning and backdrop, revealing the player placeholder.
 
+![The same local demo after the userscript removes the warning and backdrop](docs/screenshots/popup-after.png)
 
-4. **Use your existing ad blocker**:
-   Keep using your normal ad blocker, such as uBlock Origin. This script is designed to work alongside it and bypass YouTube’s ad blocker interruption / buffering behavior.
+To enable this mode on YouTube, open the script in Tampermonkey, change `const removePopup = false;` to `const removePopup = true;`, save, and reload the tab.
 
+[Watch the original project video](https://www.youtube.com/watch?v=jvSf10lgxs4).
 
-Note: This script helps when YouTube tries to interrupt playback or make videos buffer because an ad blocker is active.
+## Troubleshooting
 
+- **The script doesn't seem to run:** Verify it is enabled and that Tampermonkey has permission to run userscripts on `www.youtube.com`. Reload the tab after saving changes.
+- **Warnings still appear:** Check whether the optional `removePopup` setting is enabled. Try disabling other YouTube userscripts one at a time to rule out conflicts.
+- **Videos keep buffering:** Buffering can also be caused by network or browser issues. Compare with another video or a clean browser profile, and check whether browser-level or DNS-level filtering is involved.
 
-## Common Issues
+## Contributing
 
-
-**“Ad blockers violate YouTube Terms of Service”, “Experiencing interruptions?”, or videos keep buffering**
-
-
-This usually means YouTube has detected ad blocking behavior and is trying to interrupt playback.
-
-
-Common causes include:
-
-
-- **Adblock extension:** Use a reliable ad blocker like uBlock Origin and make sure this script is enabled.
-
-
-- **Browser built-in adblock:** Some browsers have built-in ad blockers. If you still have issues, try disabling the built-in blocker and using uBlock Origin instead.
-
-
-- **Other Tampermonkey scripts:** Scripts like YouTube enhancer may conflict. Disable them one by one to find the issue.
-
-
-- **Wi-Fi/DNS/Firewall adblock rules:** Network-level ad blocking can sometimes trigger YouTube’s detection. Check your DNS, firewall, or router settings.
-
-
-- **Windows hosts file rules:** Check the Windows hosts file at `C:\Windows\System32\drivers\etc` for ad-blocking rules.
-
-
-## Contribution
-
-
-If you have any suggestions, bug reports, or want to contribute to this userscript, feel free to create issues or pull requests in this GitHub repository.
-
-
-### Contributors
-
-
-<a href="https://github.com/TheRealJoelmatic/RemoveAdblockThing/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=TheRealJoelmatic/RemoveAdblockThing" />
-</a>
-
+Open an issue or pull request. For playback problems, include your browser, userscript manager, script version, and steps to reproduce. Remove any account details from screenshots or console logs.
 
 ## License
 
-
-This project is licensed under the [MIT License](LICENSE).
-
+[MIT](LICENSE)
 
 ## Star History
 
